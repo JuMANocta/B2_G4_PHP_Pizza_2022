@@ -28,7 +28,6 @@ require 'connexion.php';
     while ($client = $resultatClient->fetch()) {
         echo $client['nom'] . " " . $client['prenom'] . " " . $client['adresse'] . " " . $client['portable'] . " " . $client['email'] . BR;
     }
-    //echo insererPizzaSecu($connec, "Pepperoni", 12);
     ?>
 </body>
 

@@ -3,8 +3,8 @@ define('BR', '<br>');
 
 function connexionBDD(){
     $host = "localhost";
-    $user = "root";
-    $pass = "";
+    $user = "g4_pizza";
+    $pass = "g4_pizza";
     $base = "G4_PIZZA";
     try {
         $connect = new PDO('mysql:host=' . $host . ';dbname=' . $base, $user, $pass);
