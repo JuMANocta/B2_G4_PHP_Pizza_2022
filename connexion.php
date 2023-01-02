@@ -1,8 +1,7 @@
 <?php
 define('BR', '<br>');
 
-function connexionBDD()
-{
+function connexionBDD(){
     $host = "localhost";
     $user = "root";
     $pass = "";
@@ -19,19 +18,28 @@ function connexionBDD()
 }
 
 
-function afficherPizza(&$connect)
-{
+function afficherPizza(&$connect){
     $resultat = $connect->query("SELECT * FROM pizza");
-    echo "Nombre de pizzas : " . $resultat->rowCount() . BR;
-    while ($pizza = $resultat->fetch()) {
-        echo $pizza['nom'] . " " . $pizza['prix'] . "€" . BR;
-    }
     return $resultat;
 }
-
-function insererClient(&$connect, $nom, $prenom, $adresse, $portable, $email)
-{
-    $sql = "INSERT INTO client (nom, prenom, adresse, portable, email) VALUES ('" . $nom . "', '" . $prenom . "', '" . $adresse . "', '" . $portable . "', '" . $email . "')";
-    $connect->exec($sql);
-    return "Nouvel enregistrement créé à l'index " . $connect->lastInsertId() . BR;
+function afficherClient(&$connect){
+    $resultat = $connect->query("SELECT * FROM client");
+    return $resultat;
+}
+function insererClientSecu(&$connect, $nom, $prenom, $adresse, $portable, $email){
+    $stmt = $connect->prepare("INSERT INTO client (nom, prenom, adresse, portable, email) VALUES (:nom,:prenom,:adresse,:portable,:email)");
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":prenom", $prenom);
+    $stmt->bindParam(":adresse", $adresse);
+    $stmt->bindParam(":portable", $portable);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+    return "Nouveau Client créé à l'index " . $connect->lastInsertId() . BR;
+}
+function insererPizzaSecu(&$connect, $nom, $prix){
+    $stmt = $connect->prepare("INSERT INTO pizza (nom, prix) VALUES (:nom,:prix)");
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":prix", $prix);
+    $stmt->execute();
+    return "Nouvelle Pizza créé à l'index " . $connect->lastInsertId() . BR;
 }
