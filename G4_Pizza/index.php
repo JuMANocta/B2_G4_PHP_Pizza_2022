@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza G4</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="views/assets/style.css">
 </head>
 
 <body>
@@ -16,10 +16,10 @@
     <nav>
         <ul>
             <li><a href="#">Accueil</a></li>
-            <li><a href="voirPizzas.php">Nos pizzas</a></li>
-            <li><a href="insertPizza.php">Ajouter Pizzas</a></li>
-            <li><a href="voirClients.php">Nos Clients</a></li>
-            <li><a href="insertClient.php">Ajouter un Client</a></li>
+            <li><a href="views/voirPizzas.php">Nos pizzas</a></li>
+            <li><a href="views/insertPizza.php">Ajouter Pizzas</a></li>
+            <li><a href="views/voirClients.php">Nos Clients</a></li>
+            <li><a href="views/insertClient.php">Ajouter un Client</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>

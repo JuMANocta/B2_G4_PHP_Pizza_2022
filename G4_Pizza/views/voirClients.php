@@ -1,24 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza G4 - Voir les clients</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
 <body>
-    <header>
-        <h1>Pizza G4</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="voirPizzas.php">Nos pizzas</a></li>
-            <li><a href="insertPizza.php">Ajouter une pizza</a></li>
-            <li><a href="insertClient.php">Ajouter un Client</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    <?php require 'components/navBar.php' ?>
     <main>
         <h2>Liste des clients</h2>
         <table>
@@ -29,11 +21,11 @@
                 <th>Téléphone portable</th>
                 <th>Email</th>
             </tr>
-            <?php 
-            require 'connexion.php';
+            <?php
+            require '../models/connexion.php';
             $connec = connexionBDD();
             $clients = afficherClient($connec);
-            while ($client = $clients->fetch()): ?>
+            while ($client = $clients->fetch()) : ?>
                 <tr>
                     <td><?php echo $client['nom']; ?></td>
                     <td>
@@ -48,9 +40,7 @@
             <?php endwhile; ?>
         </table>
     </main>
-    <footer>
-        <p>Copyright Pizza G4</p>
-    </footer>
+    <?php require 'components/footer.php' ?>
 </body>
 
 </html>
