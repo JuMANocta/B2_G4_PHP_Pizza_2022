@@ -1,8 +1,7 @@
 <?php
 define('BR', '<br>');
 
-function connexionBDD()
-{
+function connexionBDD(){
     $host = "localhost";
     $user = "g4_pizza";
     $pass = "g4_pizza";
@@ -18,18 +17,31 @@ function connexionBDD()
     }
 }
 
-function afficherPizza(&$connect)
-{
+function afficherPizza(&$connect){
     $resultat = $connect->query("SELECT * FROM pizza");
     return $resultat;
 }
-function afficherClient(&$connect)
-{
+function afficherClient(&$connect){
     $resultat = $connect->query("SELECT * FROM client");
     return $resultat;
 }
-function insererClientSecu(&$connect, $nom, $prenom, $adresse, $portable, $email)
-{
+
+function afficherVehicule(&$connect){
+    $resultat = $connect->query("SELECT * FROM vehicule");
+    return $resultat;
+}
+
+function afficherLivreur(&$connect){
+    $resultat = $connect->query("SELECT * FROM livreur");
+    return $resultat;
+}
+
+// function afficherCommande(&$connect){
+//     $resultat = $connect->query("SELECT * FROM commande");
+//     return $resultat;
+// }
+
+function insererClientSecu(&$connect, $nom, $prenom, $adresse, $portable, $email){
     $stmt = $connect->prepare("INSERT INTO client (nom, prenom, adresse, portable, email) VALUES (:nom,:prenom,:adresse,:portable,:email)");
     $stmt->bindParam(":nom", $nom);
     $stmt->bindParam(":prenom", $prenom);
@@ -39,11 +51,29 @@ function insererClientSecu(&$connect, $nom, $prenom, $adresse, $portable, $email
     $stmt->execute();
     return "Nouveau Client " . $nom . " " . $prenom . " créé à l'index " . $connect->lastInsertId() . BR;
 }
-function insererPizzaSecu(&$connect, $nom, $prix)
-{
+function insererPizzaSecu(&$connect, $nom, $prix){
     $stmt = $connect->prepare("INSERT INTO pizza (nom, prix) VALUES (:nom,:prix)");
     $stmt->bindParam(":nom", $nom);
     $stmt->bindParam(":prix", $prix);
     $stmt->execute();
     return "Nouvelle Pizza " . $nom . " créé à l'index " . $connect->lastInsertId() . BR;
+}
+
+function insererVehiculeSecu(&$connect, $immatriculation, $marque, $modele){
+    $stmt = $connect->prepare("INSERT INTO vehicule (immatriculation, marque, modele) VALUES (:immatriculation,:marque,:modele)");
+    $stmt->bindParam(":immatriculation", $immatriculation);
+    $stmt->bindParam(":marque", $marque);
+    $stmt->bindParam(":modele", $modele);
+    $stmt->execute();
+    return "Nouveau Vehicule " . $immatriculation . "de la marque ". $marque ." créé à l'index " . $connect->lastInsertId() . BR;
+}
+
+function insererLivreurSecu(&$connect, $nom, $prenom, $portable, $email){
+    $stmt = $connect->prepare("INSERT INTO livreur (nom, prenom, portable, email) VALUES (:nom,:prenom,:portable,:email)");
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":prenom", $prenom);
+    $stmt->bindParam(":portable", $portable);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+    return "Nouveau Livreur " . $nom . " " . $prenom . " créé à l'index " . $connect->lastInsertId() . BR;
 }

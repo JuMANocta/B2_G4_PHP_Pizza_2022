@@ -20,6 +20,10 @@
             <li><a href="views/insertPizza.php">Ajouter Pizzas</a></li>
             <li><a href="views/voirClients.php">Nos Clients</a></li>
             <li><a href="views/insertClient.php">Ajouter un Client</a></li>
+            <li><a href="views/voirLivreurs.php">Nos Livreurs</a></li>
+            <li><a href="views/insertLivreur.php">Ajouter un Livreur</a></li>
+            <li><a href="views/voirVehicules.php">Nos Véhicules</a></li>
+            <li><a href="views/insertVehicule.php">Ajouter un Véhicule</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>

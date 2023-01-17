@@ -64,10 +64,7 @@ label {
     display: block;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"],
+input,
 textarea {
     width: 100%;
     padding: 12px 20px;
@@ -86,10 +83,6 @@ input[type="submit"] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
 }
 
 .container {
