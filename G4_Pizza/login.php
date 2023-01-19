@@ -1,11 +1,11 @@
-<?php session_start();
+<?php 
+session_start();
 if (isset($_SESSION['login']) && $_SESSION['login'] != '')  {
     header('Location: index.php');
     exit;
 }else{
     echo "Vous n'êtes pas connecté";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">

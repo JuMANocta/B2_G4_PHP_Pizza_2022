@@ -54,3 +54,6 @@ CREATE TABLE IF NOT EXISTS commande(
     FOREIGN KEY (id_livreur) REFERENCES livreur(id_livreur),
     FOREIGN KEY (id_vehicule) REFERENCES vehicule(id_vehicule)
 );
+
+-- créer une table dans la base de données pour objectif de gérer les connexions au site.
+-- Vous devez créer la requete sql pour le faire et me démontrer vos choix d'utilisation des colonnes et des types de données
