@@ -77,3 +77,25 @@ function insererLivreurSecu(&$connect, $nom, $prenom, $portable, $email){
     $stmt->execute();
     return "Nouveau Livreur " . $nom . " " . $prenom . " créé à l'index " . $connect->lastInsertId() . BR;
 }
+
+function verifConnexion(&$connect, $login, $pass){
+    $stmt = $connect->prepare("SELECT * FROM users WHERE login = :login");
+    $stmt->bindParam(":login", $login);
+    $stmt->execute();
+    $resultat = $stmt->fetch();
+    if(!empty($resultat) && verifPass($pass, $resultat['password'])){
+        $_SESSION['role'] = $resultat['role'];
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function verifPass($pass, $passHash){
+    $hash = hash('sha512', $pass);
+    if($hash == $passHash){
+        return true;
+    }else{
+        return false;
+    }
+}
